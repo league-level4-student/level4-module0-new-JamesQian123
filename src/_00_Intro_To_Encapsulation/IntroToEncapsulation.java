@@ -11,16 +11,17 @@ public class IntroToEncapsulation {
 		 */
 
 		// 1. Create a Vehicle object.
-
+		Vehicle car = new Vehicle();
 		// 2. Use the vehicle's setters to change fuelTankCapacity and mpg.
-
+		car.setFuelTankCapacity(10);
+		car.setMpg(17);
 		// 3. Call setFuelInTank with an amount greater than the capacity.
-
+	
 		// Note: The reason setFuelInTank doesn't show up is because it's private.
 
 		// 4. Modify setFuelInTank's access modifier so you can use it.
 		// Hint: Access modifiers are described at the top of the Vehicle class.
-
+	
 		// 5. Create a setter for the vehicle's color then set its color using it.
 
 		// 6. Create local variables for fuelTankCapacity, fuelInTank and mpg.
