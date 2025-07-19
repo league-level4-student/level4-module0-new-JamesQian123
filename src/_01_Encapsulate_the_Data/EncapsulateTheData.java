@@ -12,8 +12,14 @@ public class EncapsulateTheData {
 	 * All negative arguments should set itemsReceived to 0.
 	 */
 
-	int itemsReceived;
-
+	private int itemsReceived;
+	public void setItemsReceived(int itemsReceived) {
+		if(itemsReceived/itemsReceived == -1) {
+			itemsReceived = 0;
+		}
+		this.itemsReceived = itemsReceived;
+	}
+	
 	/*
 	 * degreesTurned must be locked between 0.0 and 360.0 inclusive.
 	 * 
@@ -21,8 +27,16 @@ public class EncapsulateTheData {
 	 * bound.
 	 */
 
-	double degreesTurned;
-
+	private double degreesTurned;
+	public void setDegreesTurned(double degreesTurned) {
+		if(degreesTurned > 360.0 ) {
+			degreesTurned = 360.0;
+		}
+		else if(degreesTurned < 0.0) {
+			degreesTurned = 0.0;
+		}
+		this.degreesTurned = degreesTurned;
+	}
 	/*
 	 * nomenclature must not contain an empty String.
 	 * 
@@ -30,8 +44,13 @@ public class EncapsulateTheData {
 	 * space.
 	 */
 
-	String nomenclature;
-
+	private String nomenclature;
+	public void setNomentclature(String nomenclature) {
+		if(nomenclature.compareTo("") == 0)  {
+			nomenclature = " ";
+		}
+		this.nomenclature = nomenclature;
+	}
 	/*
 	 * memberObj must not be a String.
 	 * 
@@ -48,6 +67,15 @@ public class EncapsulateTheData {
 	 * System.out.println(rob instanceof Random); //prints false
 	 */
 
-	Object memberObj;
-
+	private Object memberObj;
+	public void setMemberObj(Object memberObj) {
+		//if(!(memberObj.toString() == null || memberObj.toString() == memberObj)) {
+			
+		//}
+		String string = new String();
+		System.out.println(memberObj instanceof String);
+		if(memberObj instanceof String == true) {
+			memberObj = new Object();
+		}
+	}
 }
