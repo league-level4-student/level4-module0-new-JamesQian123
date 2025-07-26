@@ -14,10 +14,13 @@ public class EncapsulateTheData {
 
 	private int itemsReceived;
 	public void setItemsReceived(int itemsReceived) {
-		if(itemsReceived/itemsReceived == -1) {
+		if(itemsReceived < 0) {
 			itemsReceived = 0;
 		}
 		this.itemsReceived = itemsReceived;
+	}
+	public int getItemsReceived() {
+		return itemsReceived;
 	}
 	
 	/*
@@ -37,6 +40,9 @@ public class EncapsulateTheData {
 		}
 		this.degreesTurned = degreesTurned;
 	}
+	public double getDegreesTurned() {
+		return degreesTurned;
+	}
 	/*
 	 * nomenclature must not contain an empty String.
 	 * 
@@ -45,11 +51,14 @@ public class EncapsulateTheData {
 	 */
 
 	private String nomenclature;
-	public void setNomentclature(String nomenclature) {
+	public void setNomenclature(String nomenclature) {
 		if(nomenclature.compareTo("") == 0)  {
 			nomenclature = " ";
 		}
 		this.nomenclature = nomenclature;
+	}
+	public String getNomenclature() {
+		return nomenclature;
 	}
 	/*
 	 * memberObj must not be a String.
@@ -72,10 +81,13 @@ public class EncapsulateTheData {
 		//if(!(memberObj.toString() == null || memberObj.toString() == memberObj)) {
 			
 		//}
-		String string = new String();
 		System.out.println(memberObj instanceof String);
 		if(memberObj instanceof String == true) {
 			memberObj = new Object();
 		}
+		this.memberObj = memberObj;
+	}
+	public Object getMemberObj() {
+		return memberObj;
 	}
 }
