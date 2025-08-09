@@ -116,6 +116,18 @@ public class SnakeGame implements ActionListener, KeyListener {
 		 * 
 		 * Hint: KeyEvent.VK_UP.
 		 */
+		char key = e.getKeyChar();
+		switch (key) {
+		case KeyEvent.VK_UP:
+			snake.setDirection(Direction.UP);
+		case KeyEvent.VK_LEFT:
+			snake.setDirection(Direction.LEFT);
+		case KeyEvent.VK_RIGHT:
+			snake.setDirection(Direction.RIGHT);
+		case KeyEvent.VK_DOWN:
+			snake.setDirection(Direction.DOWN);
+
+		}
 
 	}
 
@@ -125,7 +137,11 @@ public class SnakeGame implements ActionListener, KeyListener {
 		 * Create a new Location object that is set to a random x and y values between 0
 		 * and the WIDTH and HEIGHT variables respectively.
 		 */
-
+		Random rand = new Random();
+		int randx = rand.nextInt(WIDTH);
+		int randy = rand.nextInt(HEIGHT);
+		Location newLoco = new Location();
+		newLoco.equals(randx, randy);
 
 		/*
 		 * Set the foodLocation equal to the Location object you just created.
@@ -133,23 +149,37 @@ public class SnakeGame implements ActionListener, KeyListener {
 		 * Hint: Use the snake's isLocationOnSnake method to make sure you don't put the
 		 * food on top of the snake.
 		 */
-
+		while (true) {
+			if (snake.isLocationOnSnake(newLoco)) {
+				randx = rand.nextInt(WIDTH);
+				randy = rand.nextInt(HEIGHT);
+				newLoco.equals(randx,randy);
+			} 
+			else if(!snake.isLocationOnSnake(newLoco)) {
+				break;
+			}
+		}
+		foodLocation = newLoco;
 	}
 
 	private void gameOver() {
 
 		// Stop the timer.
-
+		timer.stop();
 		// Tell the user their snake is dead.
-
+		JOptionPane.showMessageDialog(null, "Your snake is dead");
 		// Ask the user if they want to play again.
-
-
+		String playagain = JOptionPane.showInputDialog("Do you want to play again");
 		/*
 		 * If the user wants to play again, call the snake's resetLocation method and
 		 * this class's randomizeFoodLocation method then restart the timer. Otherwise,
 		 * exit the game.
 		 */
+		if(playagain .equals("Yes")) {
+			snake.resetLocation();
+			randomizeFoodLocation();
+			timer.restart();
+		}
 
 	}
 
@@ -157,18 +187,22 @@ public class SnakeGame implements ActionListener, KeyListener {
 	public void actionPerformed(ActionEvent e) {
 
 		// Call the snake's update method.
-
+		snake.update();
 		/*
 		 * If the snake's head is colliding with its own body or out of bounds call the
 		 * gameOver method.
 		 */
-
-
+		if(snake.isHeadCollidingWithBody()||snake.isOutOfBounds()) {
+			gameOver();
+		}
 		/*
 		 * If the location of the snake's head is equal to the location of the food,
 		 * feed the snake and randomize the food location.
 		 */
-
+		if(snake.getHeadLocation()==foodLocation) {
+			snake.feed();
+			randomizeFoodLocation();
+		}
 		panel.repaint();
 	}
 }
