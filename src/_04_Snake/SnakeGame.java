@@ -116,16 +116,22 @@ public class SnakeGame implements ActionListener, KeyListener {
 		 * 
 		 * Hint: KeyEvent.VK_UP.
 		 */
-		char key = e.getKeyChar();
+		int key = e.getKeyCode();
+		
 		switch (key) {
 		case KeyEvent.VK_UP:
 			snake.setDirection(Direction.UP);
+			System.out.println("hi");
+			break;
 		case KeyEvent.VK_LEFT:
 			snake.setDirection(Direction.LEFT);
+			break;
 		case KeyEvent.VK_RIGHT:
 			snake.setDirection(Direction.RIGHT);
+			break;
 		case KeyEvent.VK_DOWN:
 			snake.setDirection(Direction.DOWN);
+			break;
 
 		}
 
@@ -140,7 +146,7 @@ public class SnakeGame implements ActionListener, KeyListener {
 		Random rand = new Random();
 		int randx = rand.nextInt(WIDTH);
 		int randy = rand.nextInt(HEIGHT);
-		Location newLoco = new Location();
+		Location newLoco = new Location(randx,randy);
 		newLoco.equals(randx, randy);
 
 		/*

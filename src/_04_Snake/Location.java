@@ -1,9 +1,12 @@
 package _04_Snake;
 
 public class Location {
-	static int x; 
-	static int y;
-	
+	private int x; 
+	private int y;
+	public Location(int x, int y) {
+		this.x = x;
+		this.y = y;
+	}
 	
 	public void setX(int x) {
 		this.x = x;
@@ -19,9 +22,14 @@ public class Location {
 	public int getY() {
 		return y;
 	}
-	
+	public boolean equalsLocoVer(Location location) {
+		if(this.x == location.getX() && this.y == location.getY()) {
+			return true;
+		}
+		return false;
+	}
 	public boolean equals(int x, int y) {
-		if(Location.x == x && Location.y == y) {
+		if(this.x == x && this.y == y) {
 			return true;
 		}
 		return false;
