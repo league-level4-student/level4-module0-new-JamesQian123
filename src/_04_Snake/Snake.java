@@ -69,7 +69,7 @@ public class Snake {
 		 * Use a loop starting at the end of the ArrayList and stop before the head of
 		 * the snake (index 0) or you will go out of bounds.
 		 */
-		for(int i =snake.size()-1; i > 0; i++) {
+		for(int i =snake.size()-1; i > 0; i--) {
 			snake.get(i).setLocation(snake.get(i-1).getLocation());
 			
 		}
@@ -171,7 +171,7 @@ public class Snake {
 		 * location as any other body segment.
 		 */
 		for(int i =1; i < snake.size(); i++)
-			if(head.getLocation().equals(snake.get(i).getLocation())) {
+			if(head.getLocation().equalsLocoVer(snake.get(i).getLocation())) {
 				return true;
 		}
 		return false;
@@ -184,7 +184,7 @@ public class Snake {
 		 * on the snake.
 		 */
 		for(int i = 0; i < snake.size(); i++) {
-			if(loc.equals(snake.get(i).getLocation())) {
+			if(loc.equalsLocoVer(snake.get(i).getLocation())) {
 				return true;
 		}
 		}
